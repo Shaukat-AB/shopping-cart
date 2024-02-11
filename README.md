@@ -2,9 +2,9 @@
 
 This project is a demonstration of a shopping cart built using React's Context API and useReducer hook. It showcases how to manage and manipulate state using the Context API and useReducer to handle cart functionality.
 
-## DEMO(Unavailable)
-Visit the live demo of website at:
-[website]()
+## DEMO
+Visit the live demo of webapp at:
+[Shopping-cart](https://shopping-cart-seven-weld.vercel.app/)
 
 
 ## Features
