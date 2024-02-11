@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { HiOutlineShoppingCart } from "react-icons/hi2";
+import Logo from "../assets/shopping-cart-logo.png"
 
 export const Header = () => {
     const activeStyle =
@@ -12,7 +13,7 @@ export const Header = () => {
         <header className="flex items-center justify-between gap-4 h-16 mb-12">
             <span>
                 <img
-                    src="src/assets/shopping-cart-logo.png"
+                    src={Logo}
                     width={100}
                     alt="shopping cart logo"
                     loading="lazy"
