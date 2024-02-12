@@ -31,7 +31,7 @@ export const CartProvider = ({ children }) => {
         });
     };
 
-    const fixSumOfTwoNumbers = (num1, num2) => (num1 * 100 + num2 * 100) / 100;
+    const fixSumOfTwoNumbers = (num1, num2) => (num1 * 1000 + num2 * 1000) / 1000;
 
     const value = {
         total: state.total,
