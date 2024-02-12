@@ -25,7 +25,7 @@ export const ProductHomeCard = ({ product }) => {
             <div className="flex items-center justify-between my-4">
                 <ProductPrice price={price} />
                 <Button
-                    variant={inCart ? "remove" : "default"}
+                    variant={inCart ? "outlined" : "default"}
                     color={inCart ? "red" : "main"}
                     onClick={() => onClick()}
                 >

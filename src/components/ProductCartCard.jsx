@@ -5,8 +5,6 @@ import { ProductPrice } from "./ProductHomeCard";
 export const ProductCartCard = ({ product }) => {
     const { name, price, thumbnail } = product;
     const { removeFromCart } = useCart();
-    // price to string than split price's decimal part
-    const [priceWhole, priceDecimal] = String(price).split(".");
 
     return (
         <div className="p-4 mb-8 flex gap-4 flex-wrap items-center justify-between bg-white border border-gray-200 rounded-lg shadow">
@@ -27,7 +25,7 @@ export const ProductCartCard = ({ product }) => {
             </FlexItem>
             <FlexItem>
                 <Button
-                    variant="remove"
+                    variant="outlined"
                     color="red"
                     onClick={() => removeFromCart(product)}
                 >

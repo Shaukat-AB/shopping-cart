@@ -2,6 +2,7 @@ export const Button = ({
     variant = "default",
     color = "main",
     onClick = () => null,
+    className="",
     btnProps = {},
     children,
 }) => {
@@ -21,9 +22,9 @@ export const Button = ({
             "transition-colors hover:text-white focus:ring-4 focus:outline-none font-medium border rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2",
     };
     const finalStyle = (() =>
-        variant !== "remove"
-            ? `${variants["default"]} ${colors[color]}`
-            : `${variants["outlined"]} ${colors[color + "outlined"]}`)();
+        variant !== "outlined"
+            ? `${variants["default"]} ${colors[color]} ${className}`
+            : `${variants["outlined"]} ${colors[color + "outlined"]} ${className}`)();
 
     return (
         <button className={finalStyle} onClick={() => onClick()} {...btnProps}>
