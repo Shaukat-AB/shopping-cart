@@ -13,6 +13,7 @@ export const ProductCartCard = ({ product }) => {
                     src={thumbnail}
                     alt={name}
                     width={110}
+                    loading="lazy"
                 />
             </div>
             <p>{name}</p>
