@@ -13,7 +13,8 @@ export const CartProvider = ({ children }) => {
 
     const addToCart = (product) => {
         const updatedCart = [...state.cartList, product];
-        const updatedTotal = state.total + product.price;
+        // fix irreguler decimal part of toal price when summed
+        const updatedTotal = fixSumOfTwoNumbers(state.total, product.price);
         dispatch({
             type: "ADD_TO_CART",
             payload: { total: updatedTotal, cartList: updatedCart },
@@ -22,12 +23,15 @@ export const CartProvider = ({ children }) => {
 
     const removeFromCart = (product) => {
         const updatedCart = state.cartList.filter((p) => p.id !== product.id);
-        const updatedTotal = state.total - product.price;
+        // "fixSumOfTwoNumbers" here does substraction as price is negative
+        const updatedTotal = fixSumOfTwoNumbers(state.total, -product.price);
         dispatch({
             type: "REMOVE_FROM_CART",
             payload: { total: updatedTotal, cartList: updatedCart },
         });
     };
+
+    const fixSumOfTwoNumbers = (num1, num2) => (num1 * 100 + num2 * 100) / 100;
 
     const value = {
         total: state.total,
