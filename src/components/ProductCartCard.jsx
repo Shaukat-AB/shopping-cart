@@ -1,5 +1,6 @@
 import { useCart } from "../context/CartContext";
 import { Button } from "./Button";
+import { ProductPrice } from "./ProductHomeCard";
 
 export const ProductCartCard = ({ product }) => {
     const { name, price, thumbnail } = product;
@@ -19,12 +20,7 @@ export const ProductCartCard = ({ product }) => {
                 />
             </div>
             <p>{name}</p>
-            <p className="text-xl font-semibold tracking-tight text-gray-900">
-                {"$ " + priceWhole}
-                <span className="text-sm text-gray-700">
-                .{ priceDecimal || ".00"}
-                </span>
-            </p>
+            <ProductPrice price={price} />
             <Button
                 variant="remove"
                 color="red"
