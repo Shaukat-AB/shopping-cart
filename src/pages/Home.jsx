@@ -10,25 +10,25 @@ const Products = [
     {
         id: 101,
         name: "Gray apple watch with sports band",
-        price: 87,
+        price: 87.99,
         thumbnail: WatchImg,
     },
     {
         id: 102,
         name: "Silver and Black headphone",
-        price: 28,
+        price: 28.77,
         thumbnail: HeadphoneImg,
     },
     {
         id: 106,
         name: "One step two instant camera",
-        price: 110,
+        price: 110.98,
         thumbnail: CameraImg,
     },
     {
         id: 107,
         name: "Apple air pods",
-        price: 15,
+        price: 15.44,
         thumbnail: AirpodsImg,
     },
     {
@@ -40,7 +40,7 @@ const Products = [
     {
         id: 111,
         name: "Sea apple watch",
-        price: 92,
+        price: 92.33,
         thumbnail: SeawatchImg,
     },
 ];
