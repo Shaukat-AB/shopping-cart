@@ -12,9 +12,8 @@ export const CartProvider = ({ children }) => {
     const [state, dispatch] = useReducer(cartReducer, initialState);
 
     const addToCart = (product) => {
-        const updatedCart = [...state.cartList, product];
-        // fix irreguler decimal part of toal price when summed
-        const updatedTotal = fixSumOfTwoNumbers(state.total, product.price);
+        const updatedCart = [...state.cartList, { ...product, ["count"]: 1 }];
+        const updatedTotal = fixNumber(state.total + product.price);
         dispatch({
             type: "ADD_TO_CART",
             payload: { total: updatedTotal, cartList: updatedCart },
@@ -23,21 +22,39 @@ export const CartProvider = ({ children }) => {
 
     const removeFromCart = (product) => {
         const updatedCart = state.cartList.filter((p) => p.id !== product.id);
-        // "fixSumOfTwoNumbers" here does substraction as price is negative
-        const updatedTotal = fixSumOfTwoNumbers(state.total, -product.price);
+        const updatedTotal = fixNumber(
+            state.total - product.price * (product.count ?? 1)
+        );
         dispatch({
             type: "REMOVE_FROM_CART",
             payload: { total: updatedTotal, cartList: updatedCart },
         });
     };
 
-    const fixSumOfTwoNumbers = (num1, num2) => (num1 * 1000 + num2 * 1000) / 1000;
+    const updateProductCount = (id, count) => {
+        const updatedCart = [...state.cartList];
+        let updatedTotal = 0;
+        for (let product of updatedCart) {
+            const match = product.id === id;
+            match && (product.count += count);
+            updatedTotal = fixNumber(
+                updatedTotal + product.price * product.count
+            );
+        }
+        dispatch({
+            type: "UPDATE_PRODUCT_COUNT",
+            payload: { total: updatedTotal, cartList: updatedCart },
+        });
+    };
+
+    const fixNumber = (num) => parseFloat(num.toFixed(2));
 
     const value = {
         total: state.total,
         cartList: state.cartList,
         addToCart: addToCart,
         removeFromCart: removeFromCart,
+        updateProductCount: updateProductCount,
     };
 
     return (

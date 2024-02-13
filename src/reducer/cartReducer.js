@@ -7,8 +7,8 @@ export const cartReducer = (state, action) => {
         case "REMOVE_FROM_CART":
             return { total: payload.total, cartList: payload.cartList };
 
-        case "UPDATE_TOTAL":
-            return;
+        case "UPDATE_PRODUCT_COUNT":
+            return { total: payload.total, cartList: payload.cartList };
 
         default:
             throw new Error(type + " is not valid case in cartReducer");

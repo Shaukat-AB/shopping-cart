@@ -1,10 +1,11 @@
 import { useCart } from "../context/CartContext";
 import { Button } from "./Button";
 import { ProductPrice } from "./ProductHomeCard";
+import { HiPlus, HiMinus } from "react-icons/hi2";
 
 export const ProductCartCard = ({ product }) => {
-    const { name, price, thumbnail } = product;
-    const { removeFromCart } = useCart();
+    const { id, name, price, thumbnail, count } = product;
+    const { removeFromCart, updateProductCount } = useCart();
 
     return (
         <div className="p-4 mb-8 flex gap-4 flex-wrap items-center justify-between bg-white border border-gray-200 rounded-lg shadow">
@@ -17,11 +18,34 @@ export const ProductCartCard = ({ product }) => {
                     loading="lazy"
                 />
             </div>
-            <FlexItem>
+            <FlexItem className="min-w-20 flex-col items-center">
                 <p className="text-center">{name}</p>
-            </FlexItem>
-            <FlexItem>
                 <ProductPrice price={price} />
+            </FlexItem>
+            <FlexItem className="items-center">
+                <Button
+                    variant="icon"
+                    onClick={() => updateProductCount(id, -1)}
+                    btnProps={{
+                        disabled: count < 2,
+                        "aria-label": "Decrease product count",
+                    }}
+                >
+                    <HiMinus />
+                </Button>
+                <div className="min-w-7 flex items-center justify-center">
+                    {count ?? 1}
+                </div>
+                <Button
+                    variant="icon"
+                    onClick={() => updateProductCount(id, 1)}
+                    btnProps={{
+                        disabled: count > 24,
+                        "aria-label": "Decrease product count",
+                    }}
+                >
+                    <HiPlus />
+                </Button>
             </FlexItem>
             <FlexItem>
                 <Button
@@ -39,7 +63,7 @@ export const ProductCartCard = ({ product }) => {
 const FlexItem = ({ className = "", children }) => {
     return (
         <div
-            className={`min-w-20 flex justify-center flex-1 mx-auto${className}`}
+            className={`min-w-20 flex justify-center flex-1 mx-auto ${className}`}
         >
             {children}
         </div>

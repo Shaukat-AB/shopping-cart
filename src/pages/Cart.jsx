@@ -7,7 +7,7 @@ export const Cart = () => {
     return (
         <>
             <h1 className="text-3xl font-semibold text-center mb-8">
-                { total < 1 ? "Your cart is empty!" : "Total: $ " + total }
+                {total < 1 ? "Your cart is empty!" : "Total: $ " + total}
             </h1>
             <section>
                 {cartList.map((product) => (
