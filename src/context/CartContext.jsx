@@ -21,9 +21,14 @@ export const CartProvider = ({ children }) => {
     };
 
     const removeFromCart = (product) => {
-        const updatedCart = state.cartList.filter((p) => p.id !== product.id);
+        let [updatedCart, productCount] = [[], 1];
+        state.cartList.forEach((item) => {
+            item.id !== product.id
+                ? updatedCart.push(item)
+                : (productCount = item.count ?? 1);
+        });
         const updatedTotal = fixNumber(
-            state.total - product.price * (product.count ?? 1)
+            state.total - product.price * productCount
         );
         dispatch({
             type: "REMOVE_FROM_CART",
