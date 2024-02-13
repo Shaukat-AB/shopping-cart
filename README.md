@@ -12,7 +12,7 @@ Visit the live demo of webapp at:
 - Add products to the cart
 - Remove products from the cart
 - Calculate and display the total price of the items in the cart
-<!-- - Adjust the quantity of products in the cart -->
+- Adjust the quantity of products in the cart
 
 
 ## Technologies Used
